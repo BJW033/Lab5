@@ -8,6 +8,8 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
+import pkgEnum.eGameDifficulty;
+
 public class SudokuTest {
 
 /*	private void PrintStars() {
@@ -123,7 +125,7 @@ public class SudokuTest {
 
 	}*/
 
-
+/*
 	@Test
 	public void Sudoku_FullPuzzle_1()
 	{
@@ -135,8 +137,41 @@ public class SudokuTest {
 		} catch (Exception e) {
 			fail("Test failed to build a Sudoku");
 		}
+	}*/
+	@Test 
+	public void Sudoku_isDifficultyMetTest() {
+		try {
+			Sudoku s1 = new Sudoku(9);
+			assertTrue(s1.isDifficultyMet(100));
+			assertFalse(s1.isDifficultyMet(1000));
+			Sudoku s2 = new Sudoku(9, eGameDifficulty.HARD);
+			assertTrue(s2.isDifficultyMet(1005));
+			assertFalse(s2.isDifficultyMet(4));
+			
+		}
+		catch(Exception e) {
+			fail("Test failed to build a Sudoku");
+		}
 	}
+	
+	@Test
+	public void Sudoku_removeCellTest()
+	{
+		try {
+			Sudoku s1 = new Sudoku(9,eGameDifficulty.EASY);
+			Sudoku s2 = new Sudoku(9,eGameDifficulty.MEDIUM);
+			Sudoku s3 = new Sudoku(9,eGameDifficulty.HARD);
+			
+			System.out.println("**********EASY**********");
+			s1.PrintPuzzle();
+			System.out.println("**********MEDIUM********");
+			s2.PrintPuzzle();
+			System.out.println("**********HARD**********");
+			s3.PrintPuzzle();
 
-
+		} catch (Exception e) {
+			fail("Test failed to build a Sudoku");
+		}
+	}
 
 }
