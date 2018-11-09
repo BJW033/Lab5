@@ -143,7 +143,7 @@ public class Sudoku extends LatinSquare implements Serializable {
 			else if(tempe.compareTo(eGameDifficulty)==0) {
 				break;
 			}
-			//The difficulty is too tough so the value removed is reset and the cells RemainingValidValues list is cleared
+			//The difficulty is too tough so the value removed is put back and the cell's RemainingValidValues list is cleared
 			else if(tempe.compareTo(eGameDifficulty)>0) {
 				getPuzzle()[r][c] = val;
 				cells.get(Objects.hash(r,c)).setLstRemainingValidValues(new ArrayList<Integer>());
