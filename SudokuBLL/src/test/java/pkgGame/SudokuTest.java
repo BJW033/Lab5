@@ -125,20 +125,14 @@ public class SudokuTest {
 
 	}*/
 
-/*
-	@Test
-	public void Sudoku_FullPuzzle_1()
-	{
-		try {
-			Sudoku s1 = new Sudoku(9);
-			s1.PrintPuzzle();
-			assertTrue(s1.isSudoku());
 
-		} catch (Exception e) {
-			fail("Test failed to build a Sudoku");
-		}
-	}*/
-	@Test 
+	
+	
+	
+	/* These are commented out because their visibility was switched
+	 * to private in the Sudoku class. They are called in the constructors
+	 
+	 
 	public void Sudoku_isDifficultyMetTest() {
 		try {
 			Sudoku s1 = new Sudoku(9);
@@ -165,6 +159,53 @@ public class SudokuTest {
 			System.out.println("**********EASY**********");
 			s1.PrintPuzzle();
 			System.out.println("**********MEDIUM********");
+			s2.PrintPuzzle();
+			System.out.println("**********HARD**********");
+			s3.PrintPuzzle();
+
+		} catch (Exception e) {
+			fail("Test failed to build a Sudoku");
+		}
+	}
+	@Test
+	public void Sudoku_SetRemaining_Cells_and_Multiplier_test(){
+		int[][] puzzle = { 
+				{1,2,9, 6,4,8, 0,3,7, },
+				{0,7,0, 1,2,0 ,9,4,8 },
+				{0,0,5 ,0,3,9, 1,6,2, },
+
+				{5,0,7, 3,8,4, 0,2,9, },
+				{9,3,8 ,2,0,6 ,0,1,0 },
+				{2,6,4 ,9,0,1 ,8,5,3, },
+
+				{3,0,2 ,8,0,0 ,4,0,6 },
+				{8,0,6 ,0,9,2, 3,0,1 },
+				{7,9,1 ,0,6,3 ,2,8,5 }};
+
+			try {
+				Sudoku s1 = new Sudoku(puzzle);
+				s1.SetRemainingCells();
+				assertEquals(s1.PossibleValuesMultiplier(s1.getCells()),288);
+				
+
+			} catch (Exception e) {
+				fail("Test failed to build a Sudoku");
+			}
+			
+		
+	}
+	*/
+	@Test
+	public void Sudoku_Different_Difficulties()
+	{
+		try {
+			Sudoku s1 = new Sudoku(9,eGameDifficulty.EASY);
+			Sudoku s2 = new Sudoku(9,eGameDifficulty.MEDIUM);
+			Sudoku s3 = new Sudoku(9,eGameDifficulty.HARD);
+			
+			System.out.println("**********EASY**********");
+			s1.PrintPuzzle();
+			System.out.println("*********MEDIUM*********");
 			s2.PrintPuzzle();
 			System.out.println("**********HARD**********");
 			s3.PrintPuzzle();

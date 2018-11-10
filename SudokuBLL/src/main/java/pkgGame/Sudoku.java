@@ -105,8 +105,7 @@ public class Sudoku extends LatinSquare implements Serializable {
 			throw new Exception("Invalid size");
 		}
 		SetCells();
-		SetRemainingCells();
-		removeCells();
+		
 
 	}
 	public Sudoku(int iSize,eGameDifficulty eGD) throws Exception {
@@ -121,7 +120,7 @@ public class Sudoku extends LatinSquare implements Serializable {
 	
 	
 	
-	public void removeCells() {
+	private void removeCells() {
 		int diff = PossibleValuesMultiplier(cells);
 		int temp = 0;
 		while(!isDifficultyMet(diff)) {
@@ -162,7 +161,7 @@ public class Sudoku extends LatinSquare implements Serializable {
 		
 	}
 
-	public static int PossibleValuesMultiplier(HashMap<Integer, SudokuCell> cells2) {
+	private static int PossibleValuesMultiplier(HashMap<Integer, SudokuCell> cells2) {
 		int iCount = 1;
 		for(Map.Entry<Integer, SudokuCell> mp : cells2.entrySet()) {
 			int x = mp.getValue().getLstRemainingValidValues().size();
@@ -172,7 +171,11 @@ public class Sudoku extends LatinSquare implements Serializable {
 		}
 		return iCount;
 	}
-	public void SetRemainingCells() {
+	/* Only used to test the PossibleValuesMultiplier and SetRemainingCells methods
+	public HashMap<Integer, SudokuCell> getCells() {
+		return cells;
+	}*/
+	private void SetRemainingCells() {
 		for (int iRow = 0; iRow < iSize; iRow++) {
 			for (int iCol = 0; iCol < iSize; iCol++) {
 				if(getPuzzle()[iRow][iCol] == 0) {
@@ -182,7 +185,7 @@ public class Sudoku extends LatinSquare implements Serializable {
 		}
 	
 	}
-	public boolean isDifficultyMet(int x) {
+	private boolean isDifficultyMet(int x) {
 		eGameDifficulty give = eGameDifficulty.get(x);
 		if(give == null) {
 			return false;
