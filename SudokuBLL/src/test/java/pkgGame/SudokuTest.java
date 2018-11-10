@@ -130,7 +130,8 @@ public class SudokuTest {
 	
 	
 	/* These are commented out because their visibility was switched
-	 * to private in the Sudoku class. They are called in the constructors
+	 * to private in the Sudoku class. They are called in the constructors or
+	 * methods in the constructors.
 	 
 	 
 	public void Sudoku_isDifficultyMetTest() {
