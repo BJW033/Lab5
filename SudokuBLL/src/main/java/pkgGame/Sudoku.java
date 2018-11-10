@@ -126,37 +126,27 @@ public class Sudoku extends LatinSquare implements Serializable {
 		while(!isDifficultyMet(diff)) {
 			Random x = new Random();
 			int r = x.nextInt(iSize);
-			int c = x.nextInt(iSize);
-			int val = getPuzzle()[r][c];
-			getPuzzle()[r][c] = 0;
+			int c = x.nextInt(iSize);//Get random cell
+			int val = getPuzzle()[r][c];//Save the value
+			getPuzzle()[r][c] = 0;//Set the cell to zero
 			SetRemainingCells();
 			temp = PossibleValuesMultiplier(cells);
 			
-			eGameDifficulty tempe = eGameDifficulty.get(temp);
+			eGameDifficulty tempGD = eGameDifficulty.get(temp);//Get the new difficulty
 			//The difficulty is too low to be at least EASY
-			if(tempe == null) {
+			if(tempGD == null) {
 				diff = temp;
-				continue;
-			}
-			//The difficulty is met
-			else if(tempe.compareTo(eGameDifficulty)==0) {
-				break;
-			}
+			}			
 			//The difficulty is too tough so the value removed is put back and the cell's RemainingValidValues list is cleared
-			else if(tempe.compareTo(eGameDifficulty)>0) {
+			else if(tempGD.compareTo(eGameDifficulty)>0) {
 				getPuzzle()[r][c] = val;
 				cells.get(Objects.hash(r,c)).setLstRemainingValidValues(new ArrayList<Integer>());
-				continue;
 			}
 			//The difficulty has not been met but is not over and is at least EASY
 			else
 			{
 				diff = temp;
-				continue;
 			}
-		
-		
-			
 		}
 		
 	}
