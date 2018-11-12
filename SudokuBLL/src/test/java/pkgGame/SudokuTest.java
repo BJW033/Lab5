@@ -210,6 +210,10 @@ public class SudokuTest {
 			s2.PrintPuzzle();
 			System.out.println("**********HARD**********");
 			s3.PrintPuzzle();
+			
+			assertTrue(s1.isPartialSudoku());
+			assertTrue(s2.isPartialSudoku());
+			assertTrue(s3.isPartialSudoku());
 
 		} catch (Exception e) {
 			fail("Test failed to build a Sudoku");
